@@ -1,0 +1,1 @@
+The src directory contains python files. The main components are the web server, the utilities, the object representations, ... //TODO
