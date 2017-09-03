@@ -1,0 +1,1 @@
+HTML files contain markup that tell browsers what to display.

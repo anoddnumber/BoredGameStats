@@ -1,0 +1,1 @@
+CSS files are used to style web pages.

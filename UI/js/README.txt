@@ -1,0 +1,1 @@
+Javascript files are used to make the web page more dynamic.
