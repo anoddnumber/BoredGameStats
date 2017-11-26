@@ -35,9 +35,10 @@ class TestRandomizer(unittest.TestCase):
         print("Passed test_roll_many_sides")
 
     def test_roll_multiple_dice_and_many_sides(self):
+
         for num_dice in range(1, 100):
-            for num_sides in range(1, 100):
-                for i in range(100):
+            for num_sides in range(1, 10):
+                for i in range(10):
                     rand_nums = randomizer.roll_dice(num_dice, num_sides)
                     self.assertEqual(len(rand_nums), num_dice, 'Number of dice rolled is incorrect')
                     for rand_num in rand_nums:
@@ -54,3 +55,7 @@ class TestRandomizer(unittest.TestCase):
         self.assertEqual(rand_nums, [], 'Expected an empty list')
         rand_nums = randomizer.roll_dice(1, -1)
         self.assertEqual(rand_nums, [], 'Expected an empty list')
+
+if __name__ == "__main__":
+    unittest.main()
+
