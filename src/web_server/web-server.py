@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import random
+import src.utilities.randomizer as randomizer
 
 app = Flask(__name__)
 
@@ -9,15 +10,14 @@ def homepage():
     return render_template('index.html')
 
 @app.route('/boredgames/rolldice', methods = ['GET', 'POST'])
-def roll_dice(num_dice=1, num_sides=6):
-    number = random.randint(1,num_sides)
-    if request.method == 'GET':
-        return render_template('roll_dice.html', number= number)
-    elif request.method == 'POST':
-        return redirect(url_for('roll_dice'))
+def dice():
+    if request.method == 'POST':
+        dies = int(request.form['dies'])
+        sides = int(request.form['sides'])
+        result = randomizer.roll_dice(dies, sides)
+        return render_template("roll_dice.html", result=result)
     else:
-        return redirect(url_for('homepage'))
-
+        return render_template('roll_dice.html')
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

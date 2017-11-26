@@ -6,13 +6,24 @@
 </head>
 <body>
     <h1>ROLL YE DICE!</h1>
-        </br>
-    <h2>YOUR NUMBER IS: {{number}} </h2>
 
-    <form action="{{ url_for('roll_dice', number= number)}}" method = 'POST'>
-        <input type='submit', value = 'Re-roll'>
+    <form action="#" method = 'POST'>
+        <label>Number of "Dices":</label>
+        <input type ="number" class="form-control" maxlength="100" name="dies">
+        </br>
+        <label>Number of Sides per Dice:</label>
+        <input type ="number" class="form-control" maxlength="100" name="sides">
+        </br>
+        </br>
+
+        {% for number in result: %}
+            <h2>{{number}} </h2>
+        {% endfor %}
+
+        </br>
+        <input type='submit', value = 'Roll'>
+        <a href = "{{ url_for('homepage')}}"> Cancel </a>
     </form>
-    <a href = "{{ url_for('homepage')}}"> Cancel </a>
 
 </body>
 </html>

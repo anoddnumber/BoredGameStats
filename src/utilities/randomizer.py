@@ -1,7 +1,7 @@
 import random
 
 
-def roll_dice(num_dice=1, num_sides=6):
+def roll_dice(num_dice, num_sides):
     """
     Rolls dice
     :param num_dice: The number of dice that will be rolled
