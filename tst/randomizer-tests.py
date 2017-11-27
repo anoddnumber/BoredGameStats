@@ -60,29 +60,35 @@ class TestRandomizer(unittest.TestCase):
     def test_randomize_teams_happy(self):
         for num_teams in range(1, 100):
             for num_players in range(1, 100):
-                teams = randomizer.randomize_teams(num_players, num_teams)
-                self.assertEqual(len(teams), num_teams,
-                                 "num_teams: " + str(num_teams) + ", num_players: " + str(num_players))
+                self._test_randomized_teams(num_teams, num_players)
+        print("Passed test_randomize_teams_happy")
 
-                expected_team_len = int(num_players / num_teams)
-                expected_num_teams_with_additional_player = num_players % num_teams if num_players >= num_teams else num_players
-                expected_num_team_without_additional_player = num_teams - expected_num_teams_with_additional_player
+    def _test_randomized_teams(self, num_teams, num_players):
+        teams = randomizer.randomize_teams(num_players, num_teams)
+        self.assertEqual(len(teams), num_teams,
+                         "num_teams: " + str(num_teams) + ", num_players: " + str(num_players))
 
-                actual_num_teams_with_additional_player = 0
-                actual_num_team_without_additional_player = 0
-                for team in teams:
-                    actual_team_len = len(team)
-                    if actual_team_len != expected_team_len and actual_team_len != expected_team_len + 1:
-                        self.fail("expected team length to be " + str(expected_team_len) + " or "
-                                  + str(expected_team_len + 1) + ", instead the team length was " + str(actual_team_len))
+        expected_team_len = int(num_players / num_teams)
+        expected_num_teams_with_additional_player = num_players % num_teams if num_players >= num_teams else num_players
+        expected_num_team_without_additional_player = num_teams - expected_num_teams_with_additional_player
 
-                    if actual_team_len == expected_team_len + 1:
-                        actual_num_teams_with_additional_player += 1
-                    elif actual_team_len == expected_team_len:
-                        actual_num_team_without_additional_player += 1
+        actual_num_teams_with_additional_player = 0
+        actual_num_team_without_additional_player = 0
+        for team in teams:
+            actual_team_len = len(team)
+            if actual_team_len != expected_team_len and actual_team_len != expected_team_len + 1:
+                self.fail("expected team length to be " + str(expected_team_len) + " or "
+                          + str(expected_team_len + 1) + ", instead the team length was " + str(actual_team_len))
 
-                self.assertEqual(expected_num_teams_with_additional_player, actual_num_teams_with_additional_player)
-                self.assertEqual(expected_num_team_without_additional_player, actual_num_team_without_additional_player)
+            if actual_team_len == expected_team_len + 1:
+                actual_num_teams_with_additional_player += 1
+            elif actual_team_len == expected_team_len:
+                actual_num_team_without_additional_player += 1
+
+        self.assertEqual(expected_num_teams_with_additional_player, actual_num_teams_with_additional_player,
+                         "num_teams: " + str(num_teams) + ", num_players: " + str(num_players))
+        self.assertEqual(expected_num_team_without_additional_player, actual_num_team_without_additional_player,
+                         "num_teams: " + str(num_teams) + ", num_players: " + str(num_players))
 
     def test_randomize_teams_sad(self):
         teams = randomizer.randomize_teams(0)
@@ -93,6 +99,7 @@ class TestRandomizer(unittest.TestCase):
         self.assertEqual(teams, [])
         teams = randomizer.randomize_teams(3, -1)
         self.assertEqual(teams, [])
+        print("Passed test_randomize_teams_sad")
 
 
 if __name__ == "__main__":
