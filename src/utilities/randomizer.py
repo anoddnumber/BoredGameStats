@@ -1,21 +1,15 @@
+import utilities.randomizer_roll_dice_implementations as roll_dice_implementations
 import random
 
 
-def roll_dice(num_dice, num_sides):
+def roll_dice_colin_andy(num_dice=1, num_sides=6):
     """
     Rolls dice
     :param num_dice: The number of dice that will be rolled
     :param num_sides: The number of sides that each die has
     :return: A list of integers representing each die result.
     """
-    if num_dice <= 0 or num_sides <= 0:
-        return []
-
-    dice_rolls = []
-    for i in range(num_dice):
-        dice_rolls.append(random.randint(1, num_sides))
-
-    return dice_rolls
+    return roll_dice_implementations.roll_dice_samson(num_dice, num_sides)
 
 
 def randomize_teams(num_players, num_teams=2):
