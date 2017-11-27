@@ -55,6 +55,38 @@ class TestRandomizer(unittest.TestCase):
         self.assertEqual(rand_nums, [], 'Expected an empty list')
         rand_nums = randomizer.roll_dice(1, -1)
         self.assertEqual(rand_nums, [], 'Expected an empty list')
+        print("Passed test_bad_dice_roll_input")
+
+    def test_randomize_teams_happy(self):
+        # default_number_of_teams = 2
+
+        for num_teams in range(1, 100):
+            for num_players in range(num_teams, 100):
+                # print("num_teams: " + str(num_teams))
+                # print("num_players: " + str(num_players))
+                teams = randomizer.randomize_teams(num_players, num_teams)
+                # print("teams: " + str(teams))
+                self.assertEqual(len(teams), num_teams)
+
+                expected_team_len = int(num_players / num_teams)
+                expected_num_teams_with_additional_player = num_players % num_teams
+                expected_num_team_without_additional_player = num_teams - expected_num_teams_with_additional_player
+
+                actual_num_teams_with_additional_player = 0
+                actual_num_team_without_additional_player = 0
+                for team in teams:
+                    actual_team_len = len(team)
+                    if actual_team_len != expected_team_len and actual_team_len != expected_team_len + 1:
+                        self.fail("expected team length to be " + str(expected_team_len) + " or "
+                                  + str(expected_team_len + 1) + ", instead the team length was " + str(actual_team_len))
+
+                    if actual_team_len == expected_team_len + 1:
+                        actual_num_teams_with_additional_player += 1
+                    elif actual_team_len == expected_team_len:
+                        actual_num_team_without_additional_player += 1
+
+                self.assertEqual(expected_num_teams_with_additional_player, actual_num_teams_with_additional_player)
+                self.assertEqual(expected_num_team_without_additional_player, actual_num_team_without_additional_player)
 
 
 if __name__ == "__main__":
