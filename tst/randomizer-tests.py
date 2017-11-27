@@ -56,6 +56,6 @@ class TestRandomizer(unittest.TestCase):
         rand_nums = randomizer.roll_dice(1, -1)
         self.assertEqual(rand_nums, [], 'Expected an empty list')
 
+
 if __name__ == "__main__":
     unittest.main()
-
