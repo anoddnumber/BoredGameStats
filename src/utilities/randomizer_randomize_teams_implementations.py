@@ -1,20 +1,4 @@
-import utilities.randomizer_roll_dice_implementations as roll_dice_implementations
-import utilities.randomizer_randomize_teams_implementations as randomize_teams_implementations
-import random
-
-
-def roll_dice_colin_andy(num_dice=1, num_sides=6):
-    """
-    Rolls dice
-
-    :param num_dice: The number of dice that will be rolled
-    :param num_sides: The number of sides that each die has
-    :return: A list of integers representing each die result.
-    """
-    return roll_dice_implementations.roll_dice_samson(num_dice, num_sides)
-
-
-def randomize_teams(num_players, num_teams=2):
+def randomize_teams_samson(num_players, num_teams=2):
     """
     Randomizes teams - if there cannot be the same number of players on each team, then the additional
     players will be placed into random teams. No team can have more than 1 additional player.
@@ -23,10 +7,23 @@ def randomize_teams(num_players, num_teams=2):
     :param num_teams: The number of teams the players should be split into
     :return: a list of lists where each list represents a team
     """
-    return randomize_teams_implementations.randomize_teams_samson(num_players, num_teams)
+    import random
+    shuffled_list = random.sample(range(1, num_players + 1), num_players)
+    num_players_per_team = int(num_players / num_teams)
+    num_teams_with_additional_player = num_players % num_teams
+    num_players_in_teams_with_additional_player = (num_players_per_team + 1) * num_teams_with_additional_player
+
+    # Create teams that have an additional player first
+    randomized_teams = _partition_samson(shuffled_list[:num_players_in_teams_with_additional_player],
+                                  num_players_per_team + 1)
+
+    # Add in teams that have no additional player
+    randomized_teams += _partition_samson(shuffled_list[num_players_in_teams_with_additional_player:], num_players_per_team)
+
+    return randomized_teams
 
 
-def _partition(input_list, partition_len):
+def _partition_samson(input_list, partition_len):
     """
     Given a list, return a list of lists where each list is a partition of length partition_len
     For example, if input_list = [1, 2, 3, 4, 5, 6] and partition_len = 2, the output will be
@@ -41,9 +38,3 @@ def _partition(input_list, partition_len):
         index += partition_len
 
     return partitions
-
-
-def randomize_seating(num_players):
-    if num_players <= 0:
-        return tuple([])
-    return tuple(random.sample(range(1, num_players + 1), num_players))
