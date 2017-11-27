@@ -58,8 +58,6 @@ class TestRandomizer(unittest.TestCase):
         print("Passed test_bad_dice_roll_input")
 
     def test_randomize_teams_happy(self):
-        # default_number_of_teams = 2
-
         for num_teams in range(1, 100):
             for num_players in range(num_teams, 100):
                 # print("num_teams: " + str(num_teams))
