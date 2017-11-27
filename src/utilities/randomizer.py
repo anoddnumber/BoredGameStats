@@ -3,7 +3,7 @@ import utilities.randomizer_randomize_teams_implementations as randomize_teams_i
 import random
 
 
-def roll_dice_colin_andy(num_dice=1, num_sides=6):
+def roll_dice(num_dice=1, num_sides=6):
     """
     Rolls dice
 
@@ -29,4 +29,4 @@ def randomize_teams(num_players, num_teams=2):
 def randomize_seating(num_players):
     if num_players <= 0:
         return tuple([])
-    return tuple(random.sample(range(1, num_players + 1), num_players))
+    return random.sample(range(1, num_players + 1), num_players)
