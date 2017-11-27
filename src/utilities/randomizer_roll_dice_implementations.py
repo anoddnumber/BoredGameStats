@@ -22,7 +22,10 @@ def roll_dice_caroline_jeanette(num_dice=1, num_sides=6):  # default provided
 
 def roll_dice_jason(num_dice=1, num_sides=6):
     import random
-    return [random.randint(1, num_sides) for _ in range(num_dice)]
+    if num_dice > 0 and num_sides > 0:
+        return [random.randint(1, num_sides) for _ in range(num_dice)]
+    else:
+        return []
 
 
 def roll_dice_samson(num_dice=1, num_sides=6):

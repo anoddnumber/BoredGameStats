@@ -11,7 +11,7 @@ def roll_dice(num_dice=1, num_sides=6):
     :param num_sides: The number of sides that each die has
     :return: A list of integers representing each die result.
     """
-    return roll_dice_implementations.roll_dice_samson(num_dice, num_sides)
+    return roll_dice_implementations.roll_dice_colin_andy(num_dice, num_sides)
 
 
 def randomize_teams(num_players, num_teams=2):
