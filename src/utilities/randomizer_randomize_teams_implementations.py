@@ -1,12 +1,4 @@
 def randomize_teams_samson(num_players, num_teams=2):
-    """
-    Randomizes teams - if there cannot be the same number of players on each team, then the additional
-    players will be placed into random teams. No team can have more than 1 additional player.
-
-    :param num_players: The number of players in total
-    :param num_teams: The number of teams the players should be split into
-    :return: a list of lists where each list represents a team
-    """
     import random
     shuffled_list = random.sample(range(1, num_players + 1), num_players)
     num_players_per_team = int(num_players / num_teams)
@@ -24,11 +16,6 @@ def randomize_teams_samson(num_players, num_teams=2):
 
 
 def _partition_samson(input_list, partition_len):
-    """
-    Given a list, return a list of lists where each list is a partition of length partition_len
-    For example, if input_list = [1, 2, 3, 4, 5, 6] and partition_len = 2, the output will be
-    [[1, 2], [3, 4], [5, 6]]
-    """
     partitions = []
     index = 0
     num_partitions = int(len(input_list) / partition_len)

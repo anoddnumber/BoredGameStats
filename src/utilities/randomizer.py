@@ -26,23 +26,6 @@ def randomize_teams(num_players, num_teams=2):
     return randomize_teams_implementations.randomize_teams_samson(num_players, num_teams)
 
 
-def _partition(input_list, partition_len):
-    """
-    Given a list, return a list of lists where each list is a partition of length partition_len
-    For example, if input_list = [1, 2, 3, 4, 5, 6] and partition_len = 2, the output will be
-    [[1, 2], [3, 4], [5, 6]]
-    """
-    partitions = []
-    index = 0
-    num_partitions = int(len(input_list) / partition_len)
-
-    for i in range(num_partitions):
-        partitions.append(input_list[index: index + partition_len])
-        index += partition_len
-
-    return partitions
-
-
 def randomize_seating(num_players):
     if num_players <= 0:
         return tuple([])
