@@ -6,6 +6,17 @@
 </head>
 <body>
     <h1>HERE'S YE TEAM!</h1>
+    <div class = 'flash'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
 
     <p>Assign a number to everyone first. Number of teams default to 2 teams if left empty.</p>
 
@@ -24,7 +35,7 @@
 
         </br>
         <input type='submit', value = 'Make dem teams!'>
-        <a href = "{{ url_for('homepage')}}"> Cancel </a>
+        <a href = "{{ url_for('homepage')}}"> Go Back! </a>
     </form>
 
 </body>

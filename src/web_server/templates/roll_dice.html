@@ -6,6 +6,17 @@
 </head>
 <body>
     <h1>ROLL YE DICE!</h1>
+    <div class = 'flash'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
 
     <form action="#" method = 'POST'>
         <label>Number of "Dices":</label>
@@ -22,7 +33,7 @@
 
         </br>
         <input type='submit', value = 'Roll'>
-        <a href = "{{ url_for('homepage')}}"> Cancel </a>
+        <a href = "{{ url_for('homepage')}}"> Go Back! </a>
     </form>
 
 </body>
