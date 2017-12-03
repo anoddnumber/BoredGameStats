@@ -1,32 +1,71 @@
-def randomize_teams_caroline(num_players, num_teams=2): # randomize/separate players into teams
+def randomize_teams_caroline(num_players, num_teams=2):  # randomize/separate players into teams
     import random
 
-    if num_players <= 0 or num_teams < 2: # validation
+    if num_players <= 0 or num_teams < 1:  # validation
         return []
 
-    player_list = []
-    for i in range(1, num_players+1): # iterating through players
-        player_list.append(i)
+    players_list = [ i for i in range(1, num_players+1)] # iterating through players, starting from player 1
+    random.shuffle(players_list)  # randomly iteration through player list
 
-    random.shuffle(player_list) # randomly iteration through player list
-    # print player_list
-
-    randomized_teams = []
-    for i in range(0, num_teams): #generating empty team lists equal to num of teams
-        team = []
-        randomized_teams.append(team) # append new lists into a lists
+    randomized_teams = [ [] for i in range(num_teams)] # generating empty team lists equal to num of teams
 
     i = 0
-    for x in range(num_players): # going through the shuffled player_list
-        while i < num_teams: # this loop will distrube each player into a new team
-            randomized_teams[i].append(player_list[x])
+    for x in range(num_players):  # going through the shuffled player_list
+        while i < num_teams:  # this loop will distribute each player into a new team
+            randomized_teams[i].append(players_list[x])
             i += 1
             if i == num_teams:
-                i = 0 # returning to the start of the team list
-            break # To stop the while loop for working but maintain the i value
-        # print "i = ", i
-    # print randomized_teams
+                i = 0  # returning to the start of the team list
+            break  # To stop the while loop for working but maintain the i value
+
     return randomized_teams
+
+
+def randomize_teams_andy(num_players, num_teams=2):
+    from random import randint
+    finalTeams = [[] for i in range(num_teams)]
+    if num_players >= num_teams > 0:
+        teamRandomizer = list(range(num_teams))
+        players = list(range(num_players))
+        for i in range(len(players)):
+            if not teamRandomizer:
+                teamRandomizer = list(range(num_teams))
+            rollRandomTeam = randint(0, len(teamRandomizer) - 1)
+            team = teamRandomizer[rollRandomTeam]
+            finalTeams[team].append(players[i])
+            teamRandomizer.remove(team)
+
+    return finalTeams
+
+
+def randomize_teams_jason(num_players, num_teams=2):
+    import random
+    if num_players <= 0 and num_teams <= 0:
+        return tuple([])
+    else:
+        pass
+
+    num_equal_players = num_players // num_teams  # number of equal players per team
+    remain_num_players = num_players % num_teams  # number of remaining players
+    players = [i for i in range(1, num_players+1)]  # initialize every player with an individual number
+    random.shuffle(players)  # list of all players shuffled
+    teams = [[] for _ in range(num_teams)]  # initialize list of teams
+
+    # assign players to teams
+    u = 0
+    for i in range(num_equal_players):
+        for j in range(num_teams):
+            teams[j].append(players[u])
+            u += 1
+
+    # assign remaining players to teams
+    u = 0
+    for k in range(remain_num_players):
+        teams[u].append(players[len(players)-remain_num_players])
+        u += 1
+
+    # print(players)
+    return tuple(teams)
 
 
 def randomize_teams_samson(num_players, num_teams=2):
