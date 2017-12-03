@@ -23,7 +23,7 @@ def randomize_teams(num_players, num_teams=2):
     :param num_teams: The number of teams the players should be split into
     :return: a list of lists where each list represents a team
     """
-    return randomize_teams_implementations.randomize_teams_samson(num_players, num_teams)
+    return randomize_teams_implementations.randomize_teams_caroline(num_players, num_teams)
 
 
 def randomize_seating(num_players):

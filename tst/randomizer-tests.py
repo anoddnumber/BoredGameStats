@@ -1,6 +1,6 @@
 import unittest
 
-import utilities.randomizer as randomizer
+import src.utilities.randomizer as randomizer
 
 
 class TestRandomizer(unittest.TestCase):

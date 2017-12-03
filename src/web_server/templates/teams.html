@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <title>Teams</title>
+</head>
+<body>
+    <h1>HERE'S YE TEAM!</h1>
+
+    <p>Assign a number to everyone first. Number of teams default to 2 teams if left empty.</p>
+
+    <form action="#" method = 'POST'>
+        <label>Number of Player:</label>
+        <input type ="number" class="form-control" maxlength="100" name="players">
+        </br>
+        <label>Number of Team:</label>
+        <input type ="number" class="form-control" maxlength="100" name="team">
+        </br>
+        </br>
+
+        {% for number in result: %}
+            <h2>{{number}} </h2>
+        {% endfor %}
+
+        </br>
+        <input type='submit', value = 'Make dem teams!'>
+        <a href = "{{ url_for('homepage')}}"> Cancel </a>
+    </form>
+
+</body>
+</html>
