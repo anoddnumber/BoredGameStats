@@ -40,14 +40,14 @@ def randomize_teams_andy(num_players, num_teams=2):
 
 def randomize_teams_jason(num_players, num_teams=2):
     import random
-    if num_players <= 0 and num_teams <= 0:
-        return tuple([])
+    if num_players <= 0 or num_teams <= 0:
+        return []
     else:
         pass
 
     num_equal_players = num_players // num_teams  # number of equal players per team
     remain_num_players = num_players % num_teams  # number of remaining players
-    players = [i for i in range(1, num_players+1)]  # initialize every player with an individual number
+    players = [i for i in range(1, num_players + 1)]  # initialize every player with an individual number
     random.shuffle(players)  # list of all players shuffled
     teams = [[] for _ in range(num_teams)]  # initialize list of teams
 
@@ -61,7 +61,7 @@ def randomize_teams_jason(num_players, num_teams=2):
     # assign remaining players to teams
     u = 0
     for k in range(remain_num_players):
-        teams[u].append(players[len(players)-remain_num_players])
+        teams[u].append(players[len(players) - remain_num_players])
         u += 1
 
     # print(players)
