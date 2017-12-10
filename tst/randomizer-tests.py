@@ -92,14 +92,20 @@ class TestRandomizer(unittest.TestCase):
 
     def test_randomize_teams_sad(self):
         teams = randomizer.randomize_teams(0)
-        self.assertEqual(teams, [])
+        self.assertEqual(teams, [], 'Expected randomize_teams(0) to return an empty list')
         teams = randomizer.randomize_teams(-1)
-        self.assertEqual(teams, [])
+        self.assertEqual(teams, [], 'Expected randomize_teams(-1) to return an empty list')
         teams = randomizer.randomize_teams(-1, 2)
-        self.assertEqual(teams, [])
+        self.assertEqual(teams, [], 'Expected randomize_teams(-1, 2) to return an empty list')
         teams = randomizer.randomize_teams(3, -1)
-        self.assertEqual(teams, [])
+        self.assertEqual(teams, [], 'Expected randomize_teams(3, -1) to return an empty list')
         print("Passed test_randomize_teams_sad")
+
+    def test_randomize_seating_happy(self):
+        for i in range(1, 1000):
+            seating = randomizer.randomize_seating(i)
+            self.assertEqual(len(set(seating)), i, 'Randomized seating may have duplicate numbers')
+        print("Passed test_randomize_seating_happy")
 
 
 if __name__ == "__main__":
