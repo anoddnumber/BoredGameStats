@@ -14,13 +14,25 @@ def homepage():
 @app.route('/boredgames/rolldice', methods = ['GET', 'POST'])
 def dice():
     if request.method == 'POST':
-        dies = request.form['dies']
+        dice = request.form['dice']
         sides = request.form['sides']
-        if not dies or not sides:
-            flash("If dies and sides are left empty, we rolled to 1 dice with 6 sides beches~")
-            result = randomizer.roll_dice()
+
+        if dice:
+            if type(sides) is not int and sides:
+                flash("Fill in with actual whole integers")
+                return redirect('boredgames/rolldice')
+            else:
+                flash("Defaulting to 6 sides")
+                result = randomizer.roll_dice(int(dice), 6)
+        elif sides:
+            if type(dice) is not int and dice:
+                flash('Fill in with actual whole integers')
+                return redirect('boredgames/rolldice')
+            else:
+                flash('Defaulting to 1 dice')
+                result = randomizer.roll_dice(1, int(sides))
         else:
-            result = randomizer.roll_dice(int(dies), int(sides))
+            result = randomizer.roll_dice(int(dice), int(sides))
         return render_template("roll_dice.html", result=result)
     else:
         return render_template('roll_dice.html')
@@ -30,8 +42,8 @@ def dice():
 def teams():
     if request.method == 'POST':
         players = request.form['players']
-        if not players:
-            flash("Fill in the number of players first")
+        if not players or type(players) is not int:
+            flash("Fill in an actual number for players first")
             return redirect("/boredgames/teams")
         team = request.form['team']
         if not team:
