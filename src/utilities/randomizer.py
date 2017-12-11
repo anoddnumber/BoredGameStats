@@ -27,6 +27,11 @@ def randomize_teams(num_players, num_teams=2):
 
 
 def randomize_seating(num_players):
+    """
+    Randomly assigns player seat order
+    :param num_players: Total number of players
+    :return: list of integers representing randomized player seating
+    """
     if num_players <= 0:
-        return tuple([])
+        return []
     return random.sample(range(1, num_players + 1), num_players)
