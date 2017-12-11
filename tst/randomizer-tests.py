@@ -107,6 +107,11 @@ class TestRandomizer(unittest.TestCase):
             self.assertEqual(len(set(seating)), i, 'Randomized seating may have duplicate numbers')
         print("Passed test_randomize_seating_happy")
 
+    def test_randomize_seating_sad(self):
+        self.assertEqual(randomizer.randomize_seating(0), [])
+        self.assertEqual(randomizer.randomize_seating(-1), [])
+        self.assertEqual(randomizer.randomize_seating(-2), [])
+        self.assertEqual(randomizer.randomize_seating(-999), [])
 
 if __name__ == "__main__":
     unittest.main()
