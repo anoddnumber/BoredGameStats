@@ -1,4 +1,4 @@
-def randomize_teams_caroline(num_players, num_teams=2):  # randomize/separate players into teams
+def randomize_teams_caroline_jeanette(num_players, num_teams=2):  # randomize/separate players into teams
     import random
 
     if num_players <= 0 or num_teams < 1:  # validation
