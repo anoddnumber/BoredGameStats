@@ -108,10 +108,11 @@ class TestRandomizer(unittest.TestCase):
         print("Passed test_randomize_seating_happy")
 
     def test_randomize_seating_sad(self):
-        self.assertEqual(randomizer.randomize_seating(0), [])
-        self.assertEqual(randomizer.randomize_seating(-1), [])
-        self.assertEqual(randomizer.randomize_seating(-2), [])
-        self.assertEqual(randomizer.randomize_seating(-999), [])
+        self.assertEqual(randomizer.randomize_seating(0), [], 'Expected an empty list')
+        self.assertEqual(randomizer.randomize_seating(-1), [], 'Expected an empty list')
+        self.assertEqual(randomizer.randomize_seating(-2), [], 'Expected an empty list')
+        self.assertEqual(randomizer.randomize_seating(-999), [], 'Expected an empty list')
+
 
 if __name__ == "__main__":
     unittest.main()

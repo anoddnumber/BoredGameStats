@@ -1,6 +1,10 @@
-import utilities.randomizer_roll_dice_implementations as roll_dice_implementations
-import utilities.randomizer_randomize_teams_implementations as randomize_teams_implementations
 import random
+
+import utilities.randomizer_implementations.randomizer_randomize_teams_implementations \
+    as randomize_teams_implementations
+import utilities.randomizer_implementations.randomizer_roll_dice_implementations as roll_dice_implementations
+import utilities.randomizer_implementations.randomizer_randomize_seating_implementations \
+    as randomize_seating_implementations
 
 
 def roll_dice(num_dice=1, num_sides=6):
@@ -32,6 +36,4 @@ def randomize_seating(num_players):
     :param num_players: Total number of players
     :return: list of integers representing randomized player seating
     """
-    if num_players <= 0:
-        return []
-    return random.sample(range(1, num_players + 1), num_players)
+    return randomize_seating_implementations.randomize_seating_andy(num_players)
