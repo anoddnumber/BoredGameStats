@@ -90,6 +90,26 @@ class TestRandomizer(unittest.TestCase):
         self.assertEqual(expected_num_team_without_additional_player, actual_num_team_without_additional_player,
                          "num_teams: " + str(num_teams) + ", num_players: " + str(num_players))
 
+    def test_randomize_teams_probability(self):
+        """
+            Try running randomize_teams many times and test for very probable circumstances.
+            If it doesn't pass, it's likely that the implementation is off.
+        """
+
+        same_team = False
+        for i in range(1000):
+            teams = randomizer.randomize_teams(20, 3)
+            same_team = same_team or self._is_in_same_team(teams, 1, 2)
+
+        self.assertTrue(same_team, 'Expected players 1 and 2 to be in the same team at least once in 1000 times.'
+                                   ' It is highly likely that something is wrong with the implementation.')
+
+    def _is_in_same_team(self, teams, player1, player2):
+        for team in teams:
+            if player1 in team and player2 in team:
+                return True
+        return False
+
     def test_randomize_teams_sad(self):
         teams = randomizer.randomize_teams(0)
         self.assertEqual(teams, [], 'Expected randomize_teams(0) to return an empty list')
