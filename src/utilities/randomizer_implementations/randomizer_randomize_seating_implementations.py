@@ -4,9 +4,9 @@ def randomize_seating_jason(num_players):
     if num_players > 0:
         seating_order = [x for x in range(1, num_players+1)]
         random.shuffle(seating_order)
-        return tuple(seating_order)
+        return seating_order
     else:
-        return tuple([])
+        return []
 
 
 def randomize_seating_caroline(num_players):  # shuffle
@@ -36,5 +36,5 @@ def randomize_seating_andy(num_players):
 def randomize_seating_samson(num_players):
     import random
     if num_players <= 0:
-        return tuple([])
+        return []
     return random.sample(range(1, num_players + 1), num_players)

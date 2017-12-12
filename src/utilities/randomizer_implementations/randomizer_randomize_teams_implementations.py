@@ -65,7 +65,7 @@ def randomize_teams_jason(num_players, num_teams=2):
         u += 1
 
     # print(players)
-    return tuple(teams)
+    return teams
 
 
 def randomize_teams_samson(num_players, num_teams=2):
