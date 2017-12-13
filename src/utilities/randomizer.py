@@ -1,8 +1,7 @@
-import random
-
 import utilities.randomizer_implementations.randomizer_randomize_teams_implementations \
     as randomize_teams_implementations
-import utilities.randomizer_implementations.randomizer_roll_dice_implementations as roll_dice_implementations
+import utilities.randomizer_implementations.randomizer_roll_dice_implementations \
+    as roll_dice_implementations
 import utilities.randomizer_implementations.randomizer_randomize_seating_implementations \
     as randomize_seating_implementations
 
