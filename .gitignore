@@ -2,3 +2,4 @@
 .idea
 .gitignore.swp
 VIRTUAL
+.DS_Store
