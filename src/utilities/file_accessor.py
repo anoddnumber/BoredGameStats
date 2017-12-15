@@ -2,7 +2,7 @@ import file_accessor_implementations.read_player_scores_from_file_implementation
     as read_implementations
 
 
-def read_player_scores_from_file(file_name):
+def read_player_scores_from_file(file_path):
     """
     Reads the contents of file_name and stores each line as a list of integers.
     If the file does not exist, returns an empty list.
@@ -12,6 +12,7 @@ def read_player_scores_from_file(file_name):
     Every column represents a game's scores.
 
     Each line will have n number of scores that are separated by commas.
+    Scores separated by anything else other than a comma will result in an error.
     Every line will be guaranteed to have the same number of scores.
 
     For example, a file that contains the following contents has 2 players, each with
@@ -20,13 +21,13 @@ def read_player_scores_from_file(file_name):
     4, 3, 7, 8
     2, 4, 6, 5
 
-    :param file_name: The file to read
+    :param file_path: The path of the file to read
     :return: A list of lists that contain the scores as integers
     """
-    return read_implementations.read_player_scores_from_file_samson()
+    return read_implementations.read_player_scores_from_file_samson(file_path)
 
 
-def write_player_scores_to_file(scores, file_name):
+def write_player_scores_to_file(scores, file_path):
     """
     Writes the player scores to the file.
     If a file does not exist, creates the file and then writes the player scores into the file.
@@ -47,7 +48,7 @@ def write_player_scores_to_file(scores, file_name):
 
     :param scores: A list of scores to be added to the file. This should be equal to the number
                     of existing rows in the file (which is the number of players)
-    :param file_name: The file to write to
+    :param file_path: The path of the file to write to
     :return: None (nothing to return)
     """
     pass
