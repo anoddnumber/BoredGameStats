@@ -68,6 +68,29 @@ def randomize_teams_jason(num_players, num_teams=2):
     return teams
 
 
+def randomize_teams_colin(num_players, num_teams=2):
+    import random
+    if num_players < 0 or num_teams < 0:
+        return []
+
+    players = [i for i in range(1, num_players+1)]
+    teams = [[] for i in range(num_teams)]
+    even_num_per_team = num_players // num_teams
+
+    for even_split in range(even_num_per_team):
+        for t in range(num_teams):
+            removed_player = random.choice(players)
+            teams[t].append(removed_player)
+            players.remove(removed_player)
+
+    z = 0
+    random.shuffle(players)
+    for remaining_players in players:
+        teams[z].append(remaining_players)
+        z += 1
+    return teams
+
+
 def randomize_teams_samson(num_players, num_teams=2):
     import random
     if num_players <= 0 or num_teams <= 0:
