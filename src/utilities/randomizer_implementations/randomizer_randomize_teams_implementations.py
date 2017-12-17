@@ -1,22 +1,22 @@
-def randomize_teams_caroline_jeanette(num_players, num_teams=2):  # randomize/separate players into teams
+def randomize_teams_caroline_jeanette(num_of_players, num_of_teams = 2):  # randomize/separate players into teams
+    """This function randomizes/separates players into teams."""
     import random
 
-    if num_players <= 0 or num_teams < 1:  # validation
+    if num_of_players < 1 or num_of_teams < 1:  # validation
         return []
 
-    players_list = [ i for i in range(1, num_players+1)] # iterating through players, starting from player 1
-    random.shuffle(players_list)  # randomly iteration through player list
+    players = randomize_seating(num_of_players)
 
-    randomized_teams = [ [] for i in range(num_teams)] # generating empty team lists equal to num of teams
+    randomized_teams = [ [] for i in range(num_of_teams)] # generating empty team lists which is equal to num of teams
+    ## randomized_teams = [[]] * 10
 
     i = 0
-    for x in range(num_players):  # going through the shuffled player_list
-        while i < num_teams:  # this loop will distribute each player into a new team
-            randomized_teams[i].append(players_list[x])
+    for x in range(num_of_players):
+        if i < num_of_teams:
+            randomized_teams[i].append(players[x])
             i += 1
-            if i == num_teams:
+            if i == num_of_teams:
                 i = 0  # returning to the start of the team list
-            break  # To stop the while loop for working but maintain the i value
 
     return randomized_teams
 

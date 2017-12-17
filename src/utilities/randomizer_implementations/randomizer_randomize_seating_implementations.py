@@ -10,14 +10,15 @@ def randomize_seating_jason(num_players):
 
 
 def randomize_seating_caroline(num_players):  # shuffle
+    """This function shuffles the list of players."""
     import random
 
-    if num_players > 0:  # validation
-        players_list = [ i for i in range(1, num_players+1)] # iterating through players, starting from player 1
-        random.shuffle(players_list)  # randomly iteration through player list
-        return players_list
-    else:
+    if num_players < 1: # validation
         return []
+
+    players = list(range(1, num_players + 1))
+    random.shuffle(players)
+    return players
 
 
 def randomize_seating_andy(num_players):
@@ -31,6 +32,14 @@ def randomize_seating_andy(num_players):
             players.remove(players[player])
 
     return finalList
+
+
+def randomized_seating_colin(num_players):
+    import random
+    seating_order = list(range(1, num_players + 1))
+    random.shuffle(seating_order)
+
+    return seating_order
 
 
 def randomize_seating_samson(num_players):
