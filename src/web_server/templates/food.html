@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <title>Restaurant Picker</title>
+</head>
+<body>
+    <h1>Food!</h1>
+    <div class = 'flash'>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <form action="#" method = 'POST'>
+        <label>Your random restaurant is:</label>
+            <h2>{{number}} </h2>
+        </br>
+        <input type='submit', value = 'Re-pick'>
+        <a href = "{{ url_for('index.homepage')}}"> Go Back! </a>
+    </form>
+
+</body>
+</html>
