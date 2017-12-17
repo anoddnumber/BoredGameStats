@@ -14,7 +14,6 @@ def dice():
             dice = int(dice)
             sides = int(sides)
             result = randomizer.roll_dice(dice, sides)
-            #flash(str(dice) + " dice with " + str(sides) + " sides each")
             return render_template("roll_dice.html", result=result)
 
         except ValueError:
