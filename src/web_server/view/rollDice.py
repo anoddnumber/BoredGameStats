@@ -10,22 +10,35 @@ def dice():
         dice = request.form['dice']
         sides = request.form['sides']
 
-        if dice:
-            if type(sides) is not int and sides:
-                flash("Fill in with actual whole integers")
-                return redirect('boredgames/rolldice')
-            else:
-                flash("Defaulting to 6 sides")
-                result = randomizer.roll_dice(int(dice), 6)
-        elif sides:
-            if type(dice) is not int and dice:
-                flash('Fill in with actual whole integers')
-                return redirect('boredgames/rolldice')
-            else:
-                flash('Defaulting to 1 dice')
-                result = randomizer.roll_dice(1, int(sides))
-        else:
-            result = randomizer.roll_dice(int(dice), int(sides))
-        return render_template("roll_dice.html", result=result)
+        try:
+            dice = int(dice)
+            sides = int(sides)
+            result = randomizer.roll_dice(dice, sides)
+            #flash(str(dice) + " dice with " + str(sides) + " sides each")
+            return render_template("roll_dice.html", result=result)
+
+        except ValueError:
+            if not dice and not sides:
+                flash("Defaulting to 1 dice with 6 sides")
+                result = randomizer.roll_dice(1, 6)
+                return render_template("roll_dice.html", result=result)
+            elif dice:
+                if type(sides) is not int or type(dice) is not int:
+                    flash("Enter whole integers only")
+                    return render_template('roll_dice.html')
+                if not sides:
+                    flash("Defaulting to 6 sides")
+                    result = randomizer.roll_dice(dice, 6)
+                    return render_template("roll_dice.html", result=result)
+            elif sides:
+                if type(dice) is not int or type(sides) is not int:
+                    flash("Enter whole integers only")
+                    return render_template('roll_dice.html')
+                if not dice:
+                    flash("Defaulting to 1 dice")
+                    result = randomizer.roll_dice(1, sides)
+                    return render_template("roll_dice.html", result=result)
+            return render_template('roll_dice.html')
+
     else:
         return render_template('roll_dice.html')
