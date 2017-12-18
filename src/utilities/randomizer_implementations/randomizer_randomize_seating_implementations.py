@@ -36,6 +36,8 @@ def randomize_seating_andy(num_players):
 
 def randomized_seating_colin(num_players):
     import random
+    if num_players <= 0:
+        return []
     seating_order = list(range(1, num_players + 1))
     random.shuffle(seating_order)
 
