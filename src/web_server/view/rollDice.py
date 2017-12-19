@@ -14,7 +14,11 @@ def dice():
             dice = int(dice)
             sides = int(sides)
             result = randomizer.roll_dice(dice, sides)
-            return render_template("roll_dice.html", result=result)
+            if result:
+                return render_template("roll_dice.html", result=result)
+            else:
+                flash("Enter whole positive integers only")
+                return render_template('roll_dice.html')
 
         except ValueError:
             if not dice and not sides:
@@ -23,7 +27,7 @@ def dice():
                 return render_template("roll_dice.html", result=result)
             elif dice:
                 if type(sides) is not int or type(dice) is not int:
-                    flash("Enter whole integers only")
+                    flash("Enter positive whole integers only")
                     return render_template('roll_dice.html')
                 if not sides:
                     flash("Defaulting to 6 sides")
@@ -31,7 +35,7 @@ def dice():
                     return render_template("roll_dice.html", result=result)
             elif sides:
                 if type(dice) is not int or type(sides) is not int:
-                    flash("Enter whole integers only")
+                    flash("Enter positive whole integers only")
                     return render_template('roll_dice.html')
                 if not dice:
                     flash("Defaulting to 1 dice")
