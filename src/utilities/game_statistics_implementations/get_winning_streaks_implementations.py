@@ -1,4 +1,4 @@
-def get_winning_streak_caroline(game_results):
+def get_winning_streaks_caroline(game_results):
     from game_statistics_helpers import transpose_GameResult_caroline
 
     t_game_results = transpose_GameResult_caroline(game_results)
@@ -17,7 +17,7 @@ def get_winning_streak_caroline(game_results):
     return winning_streak
 
 
-def win_streak(my_list, player_id):
+def get_winning_streaks_jason(my_list, player_id):
     from game_statistics_helpers import wins_jason
 
     wins_list = wins_jason(my_list, player_id)

@@ -1,4 +1,4 @@
-def get_win_percentage_caroline(game_results):
+def get_win_percentages_caroline(game_results):
     from game_statistics_helpers import transpose_GameResult_caroline
 
     t_game_results = transpose_GameResult_caroline(game_results)
@@ -17,7 +17,7 @@ def get_win_percentage_caroline(game_results):
     return win_percentage
 
 
-def get_win_percentage_jason(my_list, player_id):
+def get_win_percentages_jason(my_list, player_id):
     from game_statistics_helpers import wins_jason
 
     return sum(wins_jason(my_list, player_id))/len(my_list[player_id - 1])*100
