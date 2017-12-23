@@ -8,3 +8,12 @@ def get_average_scores_caroline(game_results):
 
 def get_average_scores_jason(my_list):
     return sum(my_list)/len(my_list)
+
+def get_average_scores_colin(scores_of_a_game):
+    number_of_games = len(scores_of_a_game[0])
+    number_of_players = len(scores_of_a_game)
+
+    averages = []
+    for x in scores_of_a_game:
+         averages.append(sum(x)/number_of_games)
+    return averages
