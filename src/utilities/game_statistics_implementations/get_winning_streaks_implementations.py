@@ -34,3 +34,23 @@ def get_winning_streaks_jason(my_list, player_id):
         else:
             small_streak = 0
     return big_streak
+
+def get_winning_streaks_colin(player_scores):
+    from game_statistics_helpers import *
+    game_scores = game_scores_matrix(player_scores)
+    max_scores = max_score_of_a_game(len(player_scores[0]), game_scores)
+    win_and_losses = win_and_losses_by_player(len(player_scores), len(player_scores[0]), max_scores)
+    
+    winning_streak = [[] for player in range(len(player_scores)]
+    for player in range(len(player_scores):
+        master_counter = 0
+        current_counter = 0
+        for game in range(len(player_scores[0]):
+            if win_and_losses[player][game] == 1:
+                current_counter += 1
+                if current_counter > master_counter:
+                    master_counter = current_counter
+            else:
+                current_counter = 0
+        winning_streak[player].append(master_counter)
+    return winning_streak
