@@ -1,11 +1,11 @@
 def randomize_teams_caroline_jeanette(num_of_players, num_of_teams = 2):  # randomize/separate players into teams
     """This function randomizes/separates players into teams."""
-    import random
+    import src.utilities.randomizer as randomizer
 
     if num_of_players < 1 or num_of_teams < 1:  # validation
         return []
 
-    players = randomize_seating(num_of_players)
+    players = randomizer.randomize_seating(num_of_players)
 
     randomized_teams = [ [] for i in range(num_of_teams)] # generating empty team lists which is equal to num of teams
     ## randomized_teams = [[]] * 10

@@ -1,5 +1,5 @@
-from web_server import app
-import web_server.config as config
+from website import app
+import website.config as config
 
 
 if __name__ == '__main__':
