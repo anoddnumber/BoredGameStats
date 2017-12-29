@@ -1,0 +1,1 @@
+from web_server.web_server import app as application
