@@ -19,19 +19,26 @@ def teams():
             if teamsChecked > 0:
                 result = randomizer.randomize_teams(playersChecked,
                                                     teamsChecked)
-                return render_template('teams.html', result=result)
+                return render_template('teams.html', result=result,
+                                       player_response = players,
+                                       team_response = teams)
             if teamsChecked == 0:
                 flash('Defaulting to 2 teams')
                 result = randomizer.randomize_teams(playersChecked, 2)
-                return render_template('teams.html', result=result)
+                return render_template('teams.html', result=result,
+                                       player_response=players,
+                                       team_response=teams)
             if teamsChecked < 0:
                 flash('Enter whole positive integers only')
-                return render_template('teams.html')
+                return render_template('teams.html', player_response=players,
+                                       team_response=teams)
         elif playersChecked == 0:
             flash('Enter some amount of players at least')
-            return render_template('teams.html')
+            return render_template('teams.html', player_response=players,
+                                   team_response=teams)
         elif playersChecked < 0:
             flash('Enter whole positive integers only')
-            return render_template('teams.html')
+            return render_template('teams.html', player_response=players,
+                                   team_response=teams)
 
     return render_template('teams.html')

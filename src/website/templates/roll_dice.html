@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-    <title>Dice Roll</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+          crossorigin="anonymous">
+    <title>Teams</title>
 </head>
 <body>
     <h1>ROLL YE DICE!</h1>
@@ -20,10 +22,10 @@
 
     <form action="#" method = 'POST'>
         <label>Number of "Dices":</label>
-        <input type ="number" class="form-control" maxlength="100" name="dice">
+        <input type ="text" size="50" name="dice" value={{dice_response}}>
         </br>
         <label>Number of Sides per Dice:</label>
-        <input type ="number" class="form-control" maxlength="100" name="sides">
+        <input type ="text" size="50" name="sides" value={{sides_response}}>
         </br>
         </br>
 
@@ -32,7 +34,7 @@
         {% endfor %}
 
         </br>
-        <input type='submit', value = 'Roll'>
+        <input type='submit' value = 'Roll'>
         <a href = "{{ url_for('index.homepage')}}"> Go Back! </a>
     </form>
 
