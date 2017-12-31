@@ -1,8 +1,8 @@
 from flask import Flask
 
 from .view.index import index_blueprint
-from .view.rollDice import dice_blueprint
-from .view.teamGenerator import generator_blueprint
+from .view.roll_dice import dice_blueprint
+from .view.team_generator import generator_blueprint
 
 
 __author__ = 'samsonwong'
