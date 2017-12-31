@@ -1,42 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-          crossorigin="anonymous">
-    <title>Teams</title>
-</head>
-<body>
-    <h1>ROLL YE DICE!</h1>
-    <div class = 'flash'>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul>
-            {% for message in messages %}
-                <li> <strong> {{ message }} </strong> </li>
+{% extends "base.html" %}
+{% block content %}
+{% include "partial/header.html" %}
+
+<div class="container-fluid">
+    <div class="col-md-12">
+        <h1>ROLL YE DICE!</h1>
+
+        <div class = 'flash'>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li> <strong> {{ message }} </strong> </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <form class="form-horizontal" method = 'POST'>
+            <label>Number of "Dices":</label>
+            <br>
+            <input type ="text" size="50" name="dice" value={{dice_response}}>
+            </br>
+            <label>Number of Sides per Dice:</label>
+            <br>
+            <input type ="text" size="50" name="sides" value={{sides_response}}>
+            </br>
+
+            {% for number in result: %}
+                <h2>{{number}} </h2>
             {% endfor %}
-            </ul>
-            {% endif %}
-        {% endwith %}
+
+            </br>
+
+            <form class="form-group">
+                <button class="btn btn-success" type="submit">california ROLLLLL~</button>
+                <a class="btn btn-default" href = "{{ url_for('index.homepage')}}"> Go Back!</a>
+            </form>
+        </form>
     </div>
+</div>
 
-    <form action="#" method = 'POST'>
-        <label>Number of "Dices":</label>
-        <input type ="text" size="50" name="dice" value={{dice_response}}>
-        </br>
-        <label>Number of Sides per Dice:</label>
-        <input type ="text" size="50" name="sides" value={{sides_response}}>
-        </br>
-        </br>
-
-        {% for number in result: %}
-            <h2>{{number}} </h2>
-        {% endfor %}
-
-        </br>
-        <input type='submit' value = 'Roll'>
-        <a href = "{{ url_for('index.homepage')}}"> Go Back! </a>
-    </form>
-
-</body>
-</html>
+{% include "partial/footer.html" %}
+{% endblock content %}
