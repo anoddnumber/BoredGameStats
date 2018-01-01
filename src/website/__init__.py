@@ -1,9 +1,8 @@
-from flask import Flask
+from flask import Flask, Session
 
 from .view.index import index_blueprint
 from .view.roll_dice import dice_blueprint
 from .view.team_generator import generator_blueprint
-
 
 __author__ = 'samsonwong'
 app = Flask(__name__)
