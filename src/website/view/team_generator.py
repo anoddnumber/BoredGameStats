@@ -13,7 +13,7 @@ def teams():
         teams = request.form['team']
 
         try:
-            players = check.empty_check(players, "")
+            players = int(players)
             teams = check.empty_check(teams, 2)
 
             if players < 0 or teams < 0:
@@ -24,7 +24,7 @@ def teams():
             result = randomizer.randomize_teams(players, teams)
             return render_template('teams.html', result = result,
                                    player_response = players,
-                                   team_response = players)
+                                   team_response = teams)
 
         except ValueError:
             if type(players) is not int:
