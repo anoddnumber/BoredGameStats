@@ -1,4 +1,4 @@
-from flask import Flask, Session
+from flask import Flask
 
 from .view.index import index_blueprint
 from .view.roll_dice import dice_blueprint
